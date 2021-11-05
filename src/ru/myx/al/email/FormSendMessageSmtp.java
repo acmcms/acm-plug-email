@@ -165,7 +165,7 @@ class FormSendMessageSmtp extends AbstractForm<FormSendMessageSmtp> {
 					.addField(
 							Control.createFieldList("attachments", MultivariantString.getString("Attachments", Collections.singletonMap("ru", "Вложения")), this.attachments)
 									.setAttribute("content_fieldset", FormSendMessageSmtp.FIELDSET_ATTACHMENT_LISTING)
-									.setAttribute("content_handler", new BaseFunctionActAbstract<Object, ContainerAttachments>(Object.class, ContainerAttachments.class) {
+									.setAttribute("content_handler", new BaseFunctionActAbstract<>(Object.class, ContainerAttachments.class) {
 										
 										@Override
 										public ContainerAttachments apply(final Object argument) {
@@ -197,7 +197,7 @@ class FormSendMessageSmtp extends AbstractForm<FormSendMessageSmtp> {
 					.addField(
 							Control.createFieldList("attachments", MultivariantString.getString("Attachments", Collections.singletonMap("ru", "Вложения")), this.attachments)
 									.setAttribute("content_fieldset", FormSendMessageSmtp.FIELDSET_ATTACHMENT_LISTING)
-									.setAttribute("content_handler", new BaseFunctionActAbstract<Object, ContainerAttachments>(Object.class, ContainerAttachments.class) {
+									.setAttribute("content_handler", new BaseFunctionActAbstract<>(Object.class, ContainerAttachments.class) {
 										
 										@Override
 										public ContainerAttachments apply(final Object argument) {
