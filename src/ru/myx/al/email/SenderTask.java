@@ -3,6 +3,7 @@ package ru.myx.al.email;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -66,7 +67,7 @@ final class SenderTask implements Runnable, StatusFiller {
 			return Transfer.createCopier((byte[]) object);
 		}
 		if (object instanceof String) {
-			return Transfer.createCopier(((String) object).getBytes(Engine.CHARSET_UTF8));
+			return Transfer.createCopier(((String) object).getBytes(StandardCharsets.UTF_8));
 		}
 		if (object instanceof TransferBuffer) {
 			return ((TransferBuffer) object).toBinary();
@@ -113,7 +114,7 @@ final class SenderTask implements Runnable, StatusFiller {
 				.equalsIgnoreCase("plain");
 		final Collection<BodyBinary> attachments = Convert.Any.toAny(Base.getJava(email, "AttachmentList", Collections.EMPTY_LIST));
 		final Charset charset = encoding.length() == 0
-			? Engine.CHARSET_UTF8
+			? StandardCharsets.UTF_8
 			: Charset.forName(encoding);
 		final String useReply = reply == leastSender || reply.length() == 0
 			? null
